@@ -1,4 +1,8 @@
-# Menubot slack
+# Üterbot
+
+![Üter Zörker](http://vignette2.wikia.nocookie.net/simpsons/images/5/5f/Tapped_Out_Uter_Unlock_Artwork.png/revision/latest?cb=20151004202729)
+
+A menubot for slack
 
 ## Setup
 1. Install the `dotenv` gem

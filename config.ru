@@ -16,7 +16,7 @@ post '/' do
 
   case text
   when 'ping'
-    "Hello, friend!"
+    "Guten tag, freund!"
   else
     response = Rlocu::VenueSearch.new
       .in_lat_long_radius(lat: lat, long: long, radius: radius)
