@@ -1,3 +1,5 @@
+require 'active_support'
+require 'active_support/core_ext'
 require 'sinatra'
 require 'rlocu'
 
@@ -24,8 +26,28 @@ post '/' do
       .with_menus
       .search
 
-    menu = response.first.menus.first
-    menu.to_s
+    venue = response.first
+    return "Sorry, I couldn't find '#{text}'" if (venue.nil?)
+
+    result = "Menus for #{venue.name}"
+    venue.menus.each do |menu|
+      result = "#{menu.menu_name} menu\n"
+      menu.sections.each do |section|
+        result << "\t-----#{section.section_name}-----\n" if section.section_name.present?
+        section.subsections.each do |subsection|
+          result << "\t\t---#{subsection.subsection_name}---\n" if subsection.subsection_name.present?
+          subsection.contents.each do |content|
+            case content
+            when Rlocu::Menu::SectionText
+              result << "\t\t#{content.to_s}\n"
+            when Rlocu::Menu::MenuItem
+              result << "\t\t\t#{content.name} #{content.description} #{content.price}\n"
+            end
+          end
+        end
+      end
+    end
+    result
   end
 end
 
