@@ -1,0 +1,5 @@
+# Menus for <%= venue.name %>
+
+<% venue.menus.each do |menu| %>
+  <%= erb :menu, locals: { menu: menu } %>
+<% end %>

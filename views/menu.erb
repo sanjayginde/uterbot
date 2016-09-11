@@ -1,0 +1,17 @@
+## <%= menu.menu_name%> menu
+<% menu.sections.each do |section| %>
+  <%="### #{section.section_name}" if section.section_name.present? %>
+  <% section.subsections.each do |subsection| %>
+    <%= "#### #{subsection.subsection_name}" if subsection.subsection_name.present? %>
+    <% subsection.contents.each do |content|
+         case content
+         when Rlocu::Menu::SectionText
+    %>
+        <%= "_#{content.to_s}_" %>
+      <% when Rlocu::Menu::MenuItem %>
+        <%= "**#{content.name}** #{content.price}" %>
+        <%# #{content.description} %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

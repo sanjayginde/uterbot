@@ -1,9 +1,12 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
+ruby "2.2.5"
 
-gem 'rack'
-gem 'sinatra'
-gem 'foreman'
 
-gem 'activesupport'
+gem "rack"
+gem "sinatra"
+gem "sinatra-contrib"
+gem "foreman"
 
-gem 'rlocu'
+gem "activesupport"
+
+gem "rlocu"
