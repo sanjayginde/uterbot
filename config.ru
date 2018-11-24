@@ -6,7 +6,7 @@ require 'rlocu'
 InvalidTokenError = Class.new(Exception)
 Rlocu.configure { |conf| conf.api_key = ENV['LOCU_API_KEY'] }
 
-post '/' do
+get '/' do
   # raise(InvalidTokenError) unless params[:token] == ENV['SLACK_TOKEN']
 
   lat = ENV['LATITUDE'].to_f
